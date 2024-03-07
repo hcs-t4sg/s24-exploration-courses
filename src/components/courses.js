@@ -13,28 +13,38 @@ export default function Courses() {
   const [keyword, setKeyword] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const dbRef = ref(realtime);
-  const courseQuery = query(dbRef, orderByChild("title"));
-
   useEffect(() => {
-    get(courseQuery)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const courses = snapshot.val();
-          courses.forEach((course) => {
-            course.title =
-              course.subject + " " + course.catalogNumber + ": " + course.title;
-          });
-          setCourses(courses);
-          setLoading(false);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [courseQuery]);
+    const dbRef = ref(realtime);
+    const courseQuery = query(dbRef, orderByChild("title"));
+    const newCourses = JSON.parse(localStorage.getItem("courses"));
+    if (newCourses) {
+      setCourses(newCourses);
+      setLoading(false);
+    } else {
+      get(courseQuery)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const firebaseCourses = snapshot.val();
+            firebaseCourses.forEach((course) => {
+              course.title =
+                course.subject +
+                " " +
+                course.catalogNumber +
+                ": " +
+                course.title;
+            });
+            setCourses(firebaseCourses);
+            localStorage.setItem("courses", JSON.stringify(firebaseCourses));
+            setLoading(false);
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, []);
 
   function handleSearch(e) {
     e.preventDefault();
