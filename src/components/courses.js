@@ -7,10 +7,20 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import styles from "./courses.module.css";
 
+function removeDuplicateCourses(courses) {
+  const uniqueCourses = [];
+  const titles = [];
+  for (const course of courses) {
+    if (!titles.includes(course.title)) {
+      titles.push(course.title);
+      uniqueCourses.push(course);
+    }
+  }
+  return uniqueCourses;
+} 
+
 export default function Courses() {
   const [courses, setCourses] = useState([]);
-  const [filteredCourses, setFilteredCourses] = useState([]);
-  const [keyword, setKeyword] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,8 +43,9 @@ export default function Courses() {
                 ": " +
                 course.title;
             });
-            setCourses(firebaseCourses);
-            localStorage.setItem("courses", JSON.stringify(firebaseCourses));
+            const uniqueCourses = removeDuplicateCourses(firebaseCourses);
+            setCourses(uniqueCourses);
+            localStorage.setItem("courses", JSON.stringify(uniqueCourses));
             setLoading(false);
           } else {
             console.log("No data available");
@@ -46,27 +57,16 @@ export default function Courses() {
     }
   }, []);
 
-  function handleSearch(e) {
-    e.preventDefault();
-    setKeyword(e.target.value);
-    const filteredCourses = courses.filter((course) =>
-      course.title.toLowerCase().includes(keyword?.toLowerCase())
-    );
-    setFilteredCourses(filteredCourses.slice(0, 10));
-  }
-
   return (
     <div className={styles.searchContainer}>
       <Autocomplete
-        freeSolo
-        options={filteredCourses.map((course) => course.title)}
+        options={courses.map((course) => course.title)}
         renderInput={(params) => (
           <TextField
             {...params}
             label={loading ? "Loading..." : "Search Courses"}
           />
         )}
-        onInputChange={handleSearch}
         sx={{
           width: "100%",
         }}
