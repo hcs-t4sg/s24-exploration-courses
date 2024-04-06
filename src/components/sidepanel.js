@@ -6,7 +6,7 @@ export default function Sidepanel() {
             <header>
                 <div className={styles['image-text']}>
                     <span className={styles.image}>
-                        <img src="./images/harvard.png" alt="logo" />
+                        <img src="./images/Harvard.png" alt="logo" />
                     </span>
 
                     <div className={`${styles.text} ${styles['header-text']}`}>
@@ -22,7 +22,7 @@ export default function Sidepanel() {
                     <ul className={styles['menu-links']}>
                         <li className={styles['nav-link']}>
                             <a href="#">
-                                <img className={styles.image} src="./images/Graduation_Cap.png" alt="logo" />
+                                <img src="./images/Graduation_Cap.png" alt="logo" />
                                 <div className={`${styles.text} ${styles['nav-text']}`}>My Progress</div>
                             </a>
                         </li>
