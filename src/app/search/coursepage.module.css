@@ -27,11 +27,24 @@
  }
  
  .topBar input {
-    width: 200px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
- }
+   width: 150px;
+   padding: 5px;
+   border: 1px solid transparent; 
+   border-radius: 5px;
+   outline: none; 
+   background-color: white;
+   transition: border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out, width 0.15s ease-in-out;
+}
+
+.topBar input:focus {
+   box-shadow: 0 0 4px rgba(255,255,255,0.8); 
+   width: 225px;
+}
+
+.topBar input:hover {
+   width: 225px;
+}
+
  
  .topBar a {
     color: #fff;
@@ -55,26 +68,64 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: box-shadow 0.15s ease-in-out;
+ }
+
+ .course:hover {
+   box-shadow: 0 0 15px rgba(0,0,0,0.3);
  }
  
  .courseName {
     font-weight: bold;
-    margin-bottom: 10px;
- }
- 
- .courseDate {
-    text-align: right;
+    font-size: 1.1em;
     margin-bottom: 5px;
  }
  
- .courseInstructor {
-    text-align: right;
-    margin-bottom: 5px;
+ .courseInfoLine {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 5px;
+}
+
+.courseInstructor {
+   text-align: left;
+   font-style: italic;
+   flex: 1; 
+}
+
+.courseGroup {
+   font-size: 0.9em;
+   text-align: left;
+   flex: 1;
+}
+
+.courseDate {
+   text-align: right;
+   flex: 1;
+}
+
+ .courseMeeting {
+   font-size: 0.9em;
+   text-align: right;
+   flex: 1;
  }
+ 
  
  .courseDescription {
     font-size: 0.8em;
+    margin-top: 3px;
     margin-bottom: 3px;
  }
+
+ .courseDescription a {
+   color: grey;        
+   text-decoration: none; 
+   transition: color 0.15s ease-in-out;
+}
+
+.courseDescription a:hover, .courseDescription a:focus {
+   color: darkred;   
+   text-decoration: underline;
+}
 
  
