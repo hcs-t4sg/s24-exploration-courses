@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useAuthContext } from "@/lib/firebase/auth-context";
 import { useState } from "react";
 import { signInWithGoogle, signOut } from "@/lib/firebase/auth";
+import Link from 'next/link';
 
 const pages = [];
 const settings = ["Logout"];
@@ -116,7 +117,8 @@ function Header() {
               flexGrow: 1,
               fontWeight: 700,
               color: "inherit",
-              textDecoration: "none",
+              textDecoration: 'none',
+              '&:hover': { textDecoration: 'none' }
             }}
           >
             Course Calendar
@@ -135,6 +137,39 @@ function Header() {
 
           {user && profile && (
             <Box sx={{ flexGrow: 0 }}>
+              <Link href="/" passHref>
+                <Button
+                  component="a"
+                  sx={{
+                    marginRight: 2,
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)', 
+                      color: 'white'
+                    }
+                  }}
+                >
+                  Home
+                </Button>
+              </Link>
+              <Link href="/search" passHref>
+                <Button
+                  component="a"
+                  sx={{
+                    marginRight: 2,
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)', 
+                      color: 'white'
+                    }
+                  }}
+                >
+                  Search
+                </Button>
+              </Link>
+
               <Tooltip title="Logout">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt={profile.display_name} src={profile.photo_url} />
