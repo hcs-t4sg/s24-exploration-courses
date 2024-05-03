@@ -1,0 +1,49 @@
+.ProgressContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ProgressContainer h1 {
+    color: #333;
+}
+
+.ProgressContainer h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.ProgressContainer h3 {
+    color: #333;
+    margin-top: 20px;
+}
+
+.ProgressContainer p {
+    color: #555;
+    margin: 5px 0;
+}
+
+.ProgressContainer .icon {
+    color: red;
+    margin-right: 5px;
+}
+
+.ProgressContainer .icon img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.ProgressContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start (left) */
+}
+
+.MyPieChartContainer {
+    width: 100%; /* Adjust width as needed */
+    display: flex;
+    flex: 1;
+}

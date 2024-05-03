@@ -1,5 +1,5 @@
 import styles from './sidepanel.module.css'; // Import CSS module
-
+import Link from "next/link"
 
 export default function Sidepanel() {
     return (
@@ -20,34 +20,34 @@ export default function Sidepanel() {
                 <div className={styles.menu}>
                     <ul className={styles['menu-links']}>
                         <li>
-                            <a>
+                            <Link href="/progress">
                                 <img src="./images/Graduation_Cap.png" alt="logo" />
-                                <div className={styles.text}>My Program</div>
-                            </a>
+                                <div className={styles.text}>My Progress</div>
+                            </Link>
                         </li>
                         <li>
-                            <a>
+                            <Link href="/refresh">
                                 <img src="./images/Synchronize.png" alt="logo" />
                                 <div className={styles.text}>Refresh</div>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a>
+                            <Link href="/download">
                             <img src="./images/Download_Cloud.png" alt="logo" />
                                 <div className={styles.text}>Download</div>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a>
+                            <Link href="/cart">
                                 <img src="./images/Shopping_Cart.png" alt="logo" />
                                 <div className={styles.text}>Crimson Cart</div>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a>
+                            <Link href="/settings">
                                 <img src="./images/Services.png" alt="logo" />
                                 <div className={styles.text}>Settings</div>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
